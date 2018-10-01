@@ -1,17 +1,15 @@
+# frozen_string_literal: true
+
 require 'sliding_window'
 
 RSpec.describe(SlidingWindow) do
   describe('.new') do
     let(:buffer_without_accessor) do
-      double('buffer').tap do |dbl|
-        allow(dbl).to receive(:size)
-      end
+      instance_double(Class.new)
     end
 
     let(:buffer_without_size) do
-      double('buffer').tap do |dbl|
-        allow(dbl).to receive(:[])
-      end
+      instance_double(Class.new)
     end
 
     it('fails if the buffer is nil') do
@@ -56,7 +54,7 @@ RSpec.describe(SlidingWindow) do
       called = 0
       described_class.new((1..5).to_a, 1) { |_| called += 1 }.to_a
 
-      expect(called).to eql(5)
+      expect(called).to be(5)
     end
 
     it('yields nothing if the block matches nothing') do
@@ -68,19 +66,23 @@ RSpec.describe(SlidingWindow) do
     it('skips forward for the next window when the previous window matched') do
       sliding_window = described_class.new((1..5).to_a, 3, &:itself)
 
-      expect(sliding_window.to_a).to match_array([
-        [1, 2, 3],
-        [4, 5]
-      ])
+      expect(sliding_window.to_a).to match_array(
+        [
+          [1, 2, 3],
+          [4, 5]
+        ]
+      )
     end
 
     it('defaults the window size to 5') do
       sliding_window = described_class.new((1..10).to_a, &:itself)
 
-      expect(sliding_window.to_a).to match_array([
-        [1, 2, 3, 4, 5],
-        [6, 7, 8, 9, 10]
-      ])
+      expect(sliding_window.to_a).to match_array(
+        [
+          [1, 2, 3, 4, 5],
+          [6, 7, 8, 9, 10]
+        ]
+      )
     end
 
     it('yields the expected value in a real-world example') do
@@ -109,7 +111,7 @@ RSpec.describe(SlidingWindow) do
     end
 
     it('yields the expected value in an real-world example with possible ambiguities') do
-      buffer = %w(The Queen attended a concert at Buckingham Palace where Queen played some music)
+      buffer = %w[The Queen attended a concert at Buckingham Palace where Queen played some music]
       mapping = {
         'The Queen' => 'Queen Elizabeth II',
         'Queen' => 'Queen (band)',

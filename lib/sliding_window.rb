@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Implementation of the sliding window algorithm.
 class SlidingWindow
   include Enumerable
@@ -15,9 +17,9 @@ class SlidingWindow
   #         matches (it can be anything), otherwise `nil`. The objects returned
   #         by this block will be yielded to the enumerable.
   def initialize(buffer, max_size = 5, &block)
-    fail('The given buffer must respond to #[] and #size.') unless buffer.respond_to?(:[]) && buffer.respond_to?(:size)
-    fail('The maximum buffer size must be greater than or equal to one.') if max_size.nil? || max_size < 1
-    fail('A block is required to indicate whether a window matches anything of interest.') unless block_given?
+    raise('The given buffer must respond to #[] and #size.') unless buffer.respond_to?(:[]) && buffer.respond_to?(:size)
+    raise('The maximum buffer size must be greater than or equal to one.') if max_size.nil? || max_size < 1
+    raise('A block is required to indicate whether a window matches anything of interest.') unless block_given?
 
     @buffer = buffer
     @max_size = max_size
@@ -30,8 +32,7 @@ class SlidingWindow
     position = (0..@max_size - 1)
 
     loop do
-      window = @buffer[position]
-      match = @mapper.call(window)
+      match = @mapper.call(@buffer[position])
 
       if match.nil?
         position = (position.begin..position.end - 1)
