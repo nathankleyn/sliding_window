@@ -58,7 +58,7 @@ RSpec.describe(SlidingWindow) do
     end
 
     it('yields nothing if the block matches nothing') do
-      sliding_window = described_class.new((1..5).to_a, 3) {}
+      sliding_window = described_class.new((1..5).to_a, 3) { nil }
 
       expect(sliding_window.to_a).to be_empty
     end
