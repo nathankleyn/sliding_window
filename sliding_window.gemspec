@@ -2,7 +2,9 @@
 
 Gem::Specification.new do |gem|
   gem.name = 'sliding_window'
-  gem.version = '1.1.2'
+  # If current commit is tagged, that's our version.
+  # Otherwise fallback to full length commit as version.
+  gem.version = `sh -c 'git describe --tags --exact-match 2>/dev/null || git rev-parse HEAD'`.chomp
   gem.homepage = 'https://github.com/username/sliding_window'
   gem.license = 'MIT'
 
