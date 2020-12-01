@@ -1,4 +1,4 @@
-# Sliding Window [![Build Status](https://github.com/nathankleyn/sliding_window/workflows/Tests/badge.svg)](https://github.com/nathankleyn/sliding_window/actions?query=workflow%3ATests) [![RubyGems Version Of gitignore_rb](https://img.shields.io/gem/v/sliding_window.svg)](https://rubygems.org/gems/sliding_window)
+# Sliding Window [![Build Status](https://github.com/nathankleyn/sliding_window/workflows/Tests/badge.svg)](https://github.com/nathankleyn/sliding_window/actions?query=workflow%3ATests) [![Coverage Status](https://coveralls.io/repos/github/nathankleyn/attr_combined_accessor/badge.svg?branch=master)](https://coveralls.io/github/nathankleyn/sliding_window?branch=master) [![RubyGems Version](https://img.shields.io/gem/v/sliding_window.svg)](https://rubygems.org/gems/sliding_window)
 
 Implements the sliding window algorithm. This is useful for traversing phrases during NEL processing.
 
