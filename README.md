@@ -30,3 +30,7 @@ end
 
 sliding_window.to_a # => ['Queen Elizabeth II', 'Buckingham Palace', 'Queen (band)']
 ```
+
+## License
+
+This project is licensed [via MIT license](LICENSE).
