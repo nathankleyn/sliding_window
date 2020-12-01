@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name = 'sliding_window'
-  gem.version = '1.1.1'
+  gem.version = '1.1.2'
   gem.homepage = 'https://github.com/username/sliding_window'
   gem.license = 'MIT'
 
