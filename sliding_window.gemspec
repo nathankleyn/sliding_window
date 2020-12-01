@@ -2,9 +2,13 @@
 
 Gem::Specification.new do |gem|
   gem.name = 'sliding_window'
-  # If current commit is tagged, that's our version.
-  # Otherwise fallback to full length commit as version.
-  gem.version = `sh -c 'git describe --tags --exact-match 2>/dev/null || git rev-parse HEAD'`.chomp
+  # If current commit is tagged, that will be our version.
+  # Otherwise we'll get some suffixed version, eg. 1.1.2-1-g0fc2ecd
+  # Which represents a "distance" we are away from the last tag.
+  #
+  # Notice we tag as 'v1.2.3' but the gemspec expects just '1.2.3' so
+  # we have to strip the prefix.
+  gem.version = `git describe --tags`.chomp.delete_prefix('v')
   gem.homepage = 'https://github.com/username/sliding_window'
   gem.license = 'MIT'
 
