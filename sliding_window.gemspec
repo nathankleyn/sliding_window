@@ -25,10 +25,11 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.7.2'
 
-  gem.add_development_dependency 'coveralls', '~> 0.8.23'
   gem.add_development_dependency 'filewatcher', '~> 1.1', '>= 1.1.1'
   gem.add_development_dependency 'pry-byebug', '~> 3.9', '>= 3.9.0'
   gem.add_development_dependency 'rspec', '~> 3.10', '>= 3.10.0'
   gem.add_development_dependency 'rubocop', '~> 1.4', '>= 1.4.2'
   gem.add_development_dependency 'rubocop-rspec', '~> 2.0', '>= 2.0.0'
+  gem.add_development_dependency 'simplecov', '~> 0.20', '>= 0.20.0'
+  gem.add_development_dependency 'simplecov-lcov', '~> 0.8', '>= 0.8.0'
 end
